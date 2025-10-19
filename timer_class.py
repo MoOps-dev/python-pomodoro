@@ -66,7 +66,8 @@ class Timer:
 
     def reset_timer(self):
         self.timer_on = False
-        self.window.after_cancel(self.loop_id)
+        if self.loop_id is not None:
+            self.window.after_cancel(self.loop_id)
         self.current_duration = 0
         self.pomodoros_completed = -1
         self.pomodoros_number = 4
